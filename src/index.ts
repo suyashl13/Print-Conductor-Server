@@ -1,12 +1,17 @@
-import express, { Express, Request, Response } from 'express'
+import express, { Express } from 'express';
+import dotenv from 'dotenv';
+import baseRouter from './routers/root.router';
 
+dotenv.config();
 const app: Express = express();
 
 
-app.get('/', (req: Request, res: Response) => {
-    res.json({'success': true});
-})
+// Middleware
 
-app.listen(3330, ()=>{
-    console.log("Server Started...");
-})
+// Router
+app.use('/api/v1', baseRouter);
+
+
+app.listen(process.env['PORT'] as unknown as number, function () {
+    console.log("SERVER STARTED\nPORT: " + process.env['PORT']);
+});
