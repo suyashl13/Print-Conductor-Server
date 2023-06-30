@@ -12,6 +12,6 @@ const app: Express = express();
 app.use('/api/v1', baseRouter);
 
 
-app.listen(process.env['PORT'] as unknown as number, function () {
+app.listen(process.env['PORT'], function () {
     console.log("SERVER STARTED\nPORT: " + process.env['PORT']);
 });
